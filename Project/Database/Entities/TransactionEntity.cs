@@ -1,11 +1,16 @@
-﻿namespace Project.Models
+﻿using Project.Models;
+
+namespace Project.Database.Entities
 {
-    public class Transaction
+    public class TransactionEntity
     {
         public string Id { get; set; }
-        public string benName { get; set; }
-        public DirectionEnum Direction { get; set; }
+
+        public string benName{ get; set; }
+
         public string TransactionDate { get; set; }
+
+        public DirectionEnum? Direction { get; set; }        
         public double Amount { get; set; }
         public string Currency { get; set; }
         public TransactionKindEnum TransactionKind { get; set; }
