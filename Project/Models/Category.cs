@@ -1,6 +1,7 @@
 ﻿namespace Project.Models
+
 {
-    public class Class
+    public class Category
     {
         public string Code { get; set; }
         public string Name { get; set; }
