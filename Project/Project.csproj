@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Database\Repositories\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
 
 </Project>
