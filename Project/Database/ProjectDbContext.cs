@@ -2,7 +2,7 @@
 using Project.Database.Entities;
 using System.Reflection;
 
-namespace Product.Database
+namespace Project.Database
 {
     public class ProjectDbContext : DbContext
     {

@@ -13,7 +13,7 @@ namespace Project.Controllers
         {
             _logger = logger;
         }
-
+        /*
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -25,5 +25,6 @@ namespace Project.Controllers
             })
             .ToArray();
         }
+        */
     }
 }
