@@ -1,4 +1,4 @@
-﻿namespace Project.Models
+﻿namespace Project.Database.Entities
 {
     public enum TransactionKindEnum
 

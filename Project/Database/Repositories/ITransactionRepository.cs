@@ -9,7 +9,8 @@ namespace Project.Database.Repositories
 
         Task<TransactionEntity> Create(TransactionEntity transaction);
 
-        Task<TransactionEntity> Get(string productCode);
+        Task<TransactionEntity> GetById(string productCode);
+
 
         Task<bool> Delete(string id);
     }

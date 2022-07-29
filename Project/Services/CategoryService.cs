@@ -1,6 +1,6 @@
 ﻿namespace Project.Services
 {
-    public class CategoryService
+    public class CategoryService : ICategoryService
     {
     }
 }

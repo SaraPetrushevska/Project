@@ -26,7 +26,7 @@ namespace Project.Database.Repositories
 
         public async Task<bool> Delete(string id)
         {
-            var transaction = await Get(id);
+            var transaction = await GetById(id);
 
             if (transaction == null)
             {
@@ -38,9 +38,11 @@ namespace Project.Database.Repositories
             return true;
         }
 
-        public async Task<TransactionEntity> Get(string id)
+
+
+        public Task<TransactionEntity> GetById(string productCode)
         {
-            return await _dbContext.Transactions.FirstOrDefaultAsync(t => t.Id == id);
+            throw new NotImplementedException();
         }
 
         public async Task<PagedSortedList<TransactionEntity>> List(int page = 1, int pageSize = 5, string sortBy = null, SortOrder sortOrder = SortOrder.Asc)
@@ -63,7 +65,7 @@ namespace Project.Database.Repositories
                         break;
                     default:
                     case "Kind":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Kind) : query.OrderByDescending(x => x.Kind);
+                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.TransactionKind) : query.OrderByDescending(x => x.TransactionKind);
                         break;
                 }
             }
@@ -85,14 +87,8 @@ namespace Project.Database.Repositories
             };
         }
 
-        Task<TransactionEntity> ITransactionRepository.Get(string productCode)
-        {
-            throw new NotImplementedException();
-        }
+   
 
-        Task<PagedSortedList<TransactionEntity>> ITransactionRepository.List(int page, int pageSize, string sortBy, SortOrder sortOrder)
-        {
-            throw new NotImplementedException();
-        }
+    
     }
 }

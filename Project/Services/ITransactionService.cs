@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project.Services
 {
-    public interface ITransactionsService
+    public interface ITransactionService
     {
         Task<bool> AddTransactions(HttpRequest request);
         Task<Transaction> GetTransactionById(string Id);

@@ -6,78 +6,36 @@ using Project.Models;
 
 namespace Project.Services
 {
-    public class TransactionsService : ITransactionService
+    public class TransactionService : ITransactionService
     {
-        private readonly ITransactionRepository _transactionsRepository;
-        private readonly IMapper _mapper;
-
-        public TransactionsService(ITransactionRepository transactionsRepository, IMapper mapper)
+        Task<bool> ITransactionService.AddTransactions(HttpRequest request)
         {
-            _mapper = mapper;
-            _transactionsRepository = transactionsRepository;
+            throw new NotImplementedException();
         }
 
-
-        public async Task<bool> AddTransactions(HttpRequest request)
+        Task<bool> ITransactionService.DeleteTransactions(string id)
         {
-
-           
+            throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteTransactions(string id)
+        Task<ICollection<TransactionCommand>> ITransactionService.GetAllTransactions()
         {
-            return await _transactionsRepository.Delete(id);
-        }
-        public async Task<bool> UpdateTransactions(TransactionsDto transactionsDto)
-        {
-            var dataFromDb = await _transactionsRepository.GetById(transactionsDto.Id); // zemi go od baza preku ID
-
-            if (dataFromDb != null)
-            {
-
-                dataFromDb.BenificaryName = transactionsDto.BenificaryName;
-                dataFromDb.CategoryCode = transactionsDto.CategoryCode;
-                _transactionsRepository.Update(dataFromDb);
-
-                if (await _transactionsRepository.SaveAll())
-                {
-                    //await _loggerService.CreationLog($"Updated Transaction with id: {transactionsDto.Id}",
-                    //    "With method: UpdateTransactions ", user, ip, browser);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-        public async Task<PagedList<Transactions>> GetPagedListTransactions(QueryParams transactionsParams)
-        {
-            var query = _transactionsRepository.AsQueryable();
-            query = query.OrderBy(x => x.BenificaryName);
-
-            // filtriranje po datum
-            var dateFrom = Convert.ToDateTime(transactionsParams.FromDate);
-            var dateTo = Convert.ToDateTime(transactionsParams.ToDate);
-            if (dateFrom <= dateTo) query = query.Where(x => (DateTime)(object)x.Date >= dateFrom && (DateTime)(object)x.Date <= dateTo);
-
-            return await PagedList<Transactions>.ToPagedList(query, transactionsParams.PageNumber, transactionsParams.PageSize);
-        }
-        public async Task<ICollection<TransactionsDto>> GetAllTransactions()
-        {
-            // bez paginacija
-
-            //var dataFromDb = await _transactionsRepository.AsQueryable()
-            //    .Where(x => x.DeletedBy == null && x.DeletedBy == null)
-            //    .ToListAsync();
-
-            return null; /*_mapper.Map<ICollection<TransactionsDto>>(dataFromDb);*/
-
+            throw new NotImplementedException();
         }
 
-        public async Task<Transaction> GetTransactionById(string Id)
+        Task<PagedSortedList<Transaction>> ITransactionService.GetProducts(int page, int pageSize, string sortBy, SortOrder sortOrder)
         {
-            Transaction transaction = await _transactionsRepository.GetById(Id);
+            throw new NotImplementedException();
+        }
 
-            return transaction;
+        Task<Transaction> ITransactionService.GetTransactionById(string Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> ITransactionService.UpdateTransactions(TransactionCommand transactionsCommand)
+        {
+            throw new NotImplementedException();
         }
     }
 }
