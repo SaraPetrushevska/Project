@@ -1,6 +1,6 @@
 ﻿namespace Project.Database.Entities
 {
-    public class MCCEnum
+    public enum MCCEnum
     {
     }
 }

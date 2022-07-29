@@ -9,9 +9,8 @@ namespace Project.Commands
     public class CategoriesCommand
     {
         [Required]
-        public string Code { get; set; }  
+        public string Code { get; set; }
+        public string? ParentCode { get; set; }
         public string Name { get; set; }
-        public string ParentCode { get; set; }
-      
     }
 }
