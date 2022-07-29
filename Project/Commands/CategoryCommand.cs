@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Project.Commands
 {
-    public class CategoriesCommand
+    public class CategoryCommand
     {
         [Required]
         public string Code { get; set; }

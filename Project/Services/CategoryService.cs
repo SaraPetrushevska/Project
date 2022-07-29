@@ -2,16 +2,17 @@
 using Project.Database.Repositories;
 using Project.Models;
 using Project.Database.Entities;
+using Project.Commands;
 
 namespace Project.Services
 {
   
         public class CategoriesService : ICategoryService
         {
-            private readonly ICategoryRepository _categoriesRepository;
+            private readonly ICategoryRepository categoriesRepository;
             private readonly IMapper _mapper;
 
-            public CategoriesService(ICategoryRepository categoriesRepository, IMapper mapper)
+            public CategoriesService(ICategoryRepository _categoriesRepository, IMapper mapper)
             {
                 _mapper = mapper;
                 _categoriesRepository = categoriesRepository;
@@ -21,7 +22,7 @@ namespace Project.Services
         {
             var entity = _mapper.Map<CategoryEntity>(command);
 
-            var existingProduct = await categoriesRepository.Get(command.ProductCode);
+            var existingProduct = await categoriesRepository.Get(command.Code);
             if (existingProduct != null)
             {
                 return null;
@@ -31,21 +32,22 @@ namespace Project.Services
             return _mapper.Map<Models.Category>(result);
         }
 
-        public async Task<bool> DeleteCategory(string productCode)
+       
+        public async Task<bool> DeleteCategory(string code)
         {
-            return await categoriesRepository.Delete(productCode);
+            return await categoriesRepository.Delete(code);
         }
 
-        public async Task<Models.Category> Get(string productCode)
+        public async Task<Models.Category> Get(string code)
         {
-            var productEntity = await categoriesRepository.Get(productCode);
+            var categoryEntity = await categoriesRepository.Get(code);
 
-            if (productEntity == null)
+            if (categoryEntity == null)
             {
                 return null;
             }
 
-            return _mapper.Map<Models.Product>(productEntity);
+            return _mapper.Map<Models.Category>(categoryEntity);
         }
 
         Task<Category> ICategoryService.CreateCategory(CategoryCommand categoryCommand)
