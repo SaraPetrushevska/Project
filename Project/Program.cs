@@ -23,7 +23,7 @@ namespace Product
  
 
             builder.Services.AddScoped<ITransactionService, TransactionService>();
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<ICategoryService, CategoriesService>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 

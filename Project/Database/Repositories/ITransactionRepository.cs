@@ -6,12 +6,10 @@ namespace Project.Database.Repositories
     public interface ITransactionRepository
     {
         Task<PagedSortedList<TransactionEntity>> List(int page = 1, int pageSize = 5, string sortBy = null, SortOrder sortOrder = SortOrder.Asc);
-
         Task<TransactionEntity> Create(TransactionEntity transaction);
-
-        Task<TransactionEntity> GetById(string productCode);
-
-
+        Task<TransactionEntity> GetById(string Id);
         Task<bool> Delete(string id);
+        Task<TransactionEntity> Update(TransactionEntity transaction);
+      
     }
 }

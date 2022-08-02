@@ -50,19 +50,6 @@ namespace Project.Services
             return _mapper.Map<Models.Category>(categoryEntity);
         }
 
-        Task<Category> ICategoryService.CreateCategory(CategoryCommand categoryCommand)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> ICategoryService.DeleteCategory(string Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Category> ICategoryService.Get(string id)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -87,8 +87,9 @@ namespace Project.Database.Repositories
             };
         }
 
-   
-
-    
+        Task<TransactionEntity> ITransactionRepository.Update(TransactionEntity transaction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
